@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A little letter for you</title>
+  <meta name="description" content="A romantic letter from one cat person to another.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+    :root {
+      --ink: #332a2a;
+      --muted: #806c6c;
+      --rose: #d96f74;
+      --rose-deep: #b9505b;
+      --blush: #f5d9d1;
+      --cream: #fff3f2;
+      --paper: #fffafa;
+      --gold: #d4a15e;
+      --sage: #9baa8f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      background:
+        radial-gradient(circle at 10% 12%, rgba(217, 111, 116, .18) 0 2px, transparent 3px),
+        radial-gradient(circle at 88% 75%, rgba(212, 161, 94, .2) 0 3px, transparent 4px),
+        linear-gradient(135deg, #f8dfe1 0%, #fff4f1 47%, #eee4e9 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: .28;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E");
+    }
+
+    .scene {
+      width: min(1100px, calc(100% - 36px));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 58px 0 42px;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      align-items: center;
+      gap: clamp(30px, 7vw, 100px);
+      position: relative;
+    }
+
+    .intro { position: relative; z-index: 2; animation: rise .8s ease both; }
+    .intro::before {
+      content: '♡  ♥  ♡';
+      display: block;
+      margin-bottom: 18px;
+      color: var(--rose);
+      font-size: 1.35rem;
+      letter-spacing: .28em;
+    }
+    .eyebrow {
+      color: var(--rose-deep);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin: 0 0 22px;
+    }
+    h1 {
+      max-width: 470px;
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.3rem, 6vw, 5.8rem);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: 0;
+    }
+    h1 em { color: var(--rose-deep); font-weight: 500; }
+    .intro-copy {
+      max-width: 360px;
+      margin: 27px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .cat-window {
+      margin-top: 42px;
+      width: 280px;
+      height: 190px;
+      position: relative;
+      border-bottom: 2px solid rgba(51, 42, 42, .16);
+    }
+    .moon {
+      position: absolute;
+      width: 112px;
+      height: 112px;
+      left: 68px;
+      top: 0;
+      border-radius: 50%;
+      background: #fff0c9;
+      box-shadow: 0 0 0 12px rgba(255, 240, 201, .22), 0 0 40px rgba(255, 222, 148, .65);
+    }
+    .cat {
+      position: absolute;
+      bottom: 0;
+      width: 115px;
+      height: 115px;
+      border-radius: 48% 48% 22% 22%;
+      background: #8a6860;
+      filter: drop-shadow(8px 8px 0 rgba(94, 65, 62, .08));
+    }
+    .cat::before, .cat::after {
+      content: '';
+      position: absolute;
+      top: -24px;
+      width: 48px;
+      height: 53px;
+      background: inherit;
+      clip-path: polygon(0 100%, 18% 0, 100% 68%);
+    }
+    .cat::before { left: 5px; transform: rotate(-7deg); }
+    .cat::after { right: 5px; transform: scaleX(-1) rotate(-7deg); }
+    .cat .face { position: absolute; inset: 39px 19px auto; z-index: 1; }
+    .cat .face::before, .cat .face::after {
+      content: '•'; position: absolute; color: #332a2a; font-size: 17px;
+    }
+    .cat .face::before { left: 6px; }
+    .cat .face::after { right: 6px; }
+    .cat .nose { position: absolute; left: 50%; top: 18px; width: 7px; height: 5px; border-radius: 50%; background: #d96f74; transform: translateX(-50%); }
+    .cat .tail { position: absolute; width: 68px; height: 82px; border: 12px solid #8a6860; border-left-color: transparent; border-bottom-color: transparent; border-radius: 50%; right: -50px; bottom: 10px; transform: rotate(22deg); }
+    .cat.one { left: 25px; transform: scale(.82); transform-origin: bottom left; background: #9a7469; }
+    .cat.two { right: 10px; background: #c48a66; }
+    .cat.two::before, .cat.two::after { background: #c48a66; }
+    .cat.two .tail { border-color: #c48a66; border-left-color: transparent; border-bottom-color: transparent; }
+    .spark { position: absolute; color: var(--gold); font-size: 1.3rem; animation: twinkle 2.5s ease-in-out infinite; }
+    .spark.s1 { left: 20px; top: 24px; }
+    .spark.s2 { right: 15px; top: 36px; animation-delay: .8s; }
+
+    .cat-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      width: 280px;
+      margin-top: 18px;
+    }
+    .cat-photo {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border: 4px solid rgba(255, 250, 250, .92);
+      box-shadow: 0 7px 14px rgba(126, 81, 68, .15);
+      transform: rotate(-3deg);
+    }
+    .cat-photo:nth-child(2) { transform: translateY(7px) rotate(2deg); }
+    .cat-photo:nth-child(3) { transform: rotate(-1deg); }
+    .cat-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+    .letter {
+      position: relative;
+      padding: clamp(32px, 5vw, 66px) clamp(28px, 6vw, 76px);
+      background: rgba(255, 253, 249, .92);
+      border: 1px solid rgba(177, 126, 112, .24);
+      box-shadow: 18px 22px 0 rgba(154, 94, 87, .1), 0 24px 65px rgba(126, 81, 68, .13);
+      animation: rise .8s .15s ease both;
+    }
+    .letter::before {
+      content: '♥  ♡  ♥';
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      color: var(--rose);
+      font-size: 1.1rem;
+      letter-spacing: .16em;
+    }
+    .letter::after {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(212, 161, 94, .28);
+      pointer-events: none;
+    }
+    .letter > * { position: relative; z-index: 1; }
+    .date { color: var(--muted); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+    .letter h2 { margin: 27px 0 24px; font: italic 500 clamp(2rem, 4vw, 3.3rem)/1.05 'Playfair Display', serif; }
+    .letter p { max-width: 520px; margin: 0 0 20px; font-size: 1rem; line-height: 1.85; }
+    .letter p.lede { font-family: 'Playfair Display', serif; font-size: 1.18rem; line-height: 1.6; }
+    .signoff { margin-top: 34px; color: var(--muted); }
+    .signature { margin-top: 4px; color: var(--rose-deep); font: italic 500 2rem 'Playfair Display', serif; }
+    .button-row { margin-top: 30px; display: flex; align-items: center; gap: 14px; }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 19px;
+      color: white;
+      background: var(--rose-deep);
+      font: 700 .78rem 'DM Sans', sans-serif;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+    }
+    button:hover { transform: translateY(-2px); background: #a94450; }
+    button:focus-visible { outline: 3px solid rgba(217, 111, 116, .4); outline-offset: 3px; }
+    .tiny-note { color: var(--muted); font-size: .75rem; }
+
+    .heart { position: fixed; pointer-events: none; color: var(--rose); font-size: 1.4rem; animation: float-up 1.8s ease-out forwards; z-index: 4; }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes twinkle { 0%, 100% { opacity: .35; transform: scale(.8) rotate(0); } 50% { opacity: 1; transform: scale(1.1) rotate(12deg); } }
+    @keyframes float-up { from { opacity: 1; transform: translateY(0) scale(.8) rotate(0); } to { opacity: 0; transform: translateY(-120px) scale(1.4) rotate(18deg); } }
+
+    @media (max-width: 760px) {
+      .scene { padding: 42px 0 50px; grid-template-columns: 1fr; gap: 42px; }
+      .intro { text-align: center; }
+      .intro-copy { margin-left: auto; margin-right: auto; }
+      .cat-window { margin: 35px auto 0; transform: scale(.82); transform-origin: top center; height: 155px; }
+      .letter { margin-top: -12px; box-shadow: 10px 14px 0 rgba(154, 94, 87, .1), 0 18px 45px rgba(126, 81, 68, .13); }
+    }
+  </style>
+</head>
+<body>
+  <main class="scene">
+    <section class="intro" aria-label="Introduction">
+      <p class="eyebrow">A note from my heart</p>
+      <h1>For my favorite <em>cat person.</em></h1>
+      <p class="intro-copy">Somewhere between sleepy purrs and sunlit windows, you became my favorite place to be.</p>
+      <div class="cat-window" aria-hidden="true">
+        <span class="moon"></span>
+        <span class="spark s1">✦</span><span class="spark s2">✦</span>
+        <div class="cat one"><div class="face"><i class="nose"></i></div><div class="tail"></div></div>
+        <div class="cat two"><div class="face"><i class="nose"></i></div><div class="tail"></div></div>
+      </div>
+      <div class="cat-gallery" aria-label="Three sweet cat photos">
+        <div class="cat-photo"><img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=240&q=85" alt="Orange cat looking at the camera"></div>
+        <div class="cat-photo"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=240&q=85" alt="Fluffy cat resting on a blanket"></div>
+        <div class="cat-photo"><img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=240&q=85" alt="Gray and white cat with bright eyes"></div>
+      </div>
+    </section>
+
+    <article class="letter">
+      <div class="date">September 4, 2026</div>
+      <h2>Renie,</h2>
+      <p class="lede">I don&rsquo;t always know how to put my feelings into words, but I want you to know just how much you mean to me.</p>
+      <p>I love you more than I can explain. You&rsquo;ve become such an important part of my life, and even the smallest moments with you can make my day better. Your smile, your laugh, your personality, and simply being around you are things I genuinely treasure.</p>
+      <p>I&rsquo;m grateful for every conversation, every memory, and every moment we&rsquo;ve shared. You make me want to become a better person, and I hope you always know that you are appreciated, cared for, and special to me.</p>
+      <p>I may not always say it perfectly, but my feelings for you are real. I care about you deeply, and no matter what happens, I&rsquo;ll always be thankful that you came into my life.</p>
+      <p>I love you more than words can ever fully describe.</p>
+      <p class="signoff">With all my heart,</p>
+      <div class="signature">Chairman Brybry</div>
+      <div class="button-row">
+        <button type="button" id="heartButton">send a little love ♥</button>
+        <span class="tiny-note" id="message" aria-live="polite">(and a cat-approved kiss)</span>
+      </div>
+    </article>
+  </main>
+  <script>
+    const button = document.querySelector('#heartButton');
+    const message = document.querySelector('#message');
+    button.addEventListener('click', () => {
+      const bounds = button.getBoundingClientRect();
+      for (let index = 0; index < 9; index += 1) {
+        const heart = document.createElement('span');
+        heart.className = 'heart';
+        heart.textContent = index % 2 ? '♥' : '♡';
+        heart.style.left = `${bounds.left + bounds.width / 2 + (Math.random() - .5) * 80}px`;
+        heart.style.top = `${bounds.top + 4 + (Math.random() - .5) * 12}px`;
+        heart.style.animationDelay = `${index * 55}ms`;
+        document.body.appendChild(heart);
+        heart.addEventListener('animationend', () => heart.remove());
+      }
+      message.textContent = 'love delivered ✦';
+    });
+  </script>
+</body>
+</html>
